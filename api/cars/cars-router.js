@@ -20,7 +20,7 @@ router.get('/', async(req, res, next) => {
     }
 })
 
-router.get('/:id', checkCarId, (req, res) => {
+router.get('/:id', checkCarId, (req, res, next) => {
     res.status(200).json(req.car)
 })
 
@@ -34,8 +34,7 @@ router.post('/', checkCarPayload, checkVinNumberUnique, checkVinNumberValid,
         }
     })
 
-router.use((err, req, res, next) => { // eslint-disable-line
-    // CALL next(err) IF THE PROMISE REJECTS INSIDE YOUR ENDPOINTS
+router.use((err, req, res, next) => {
     res.status(500).json({
         message: 'something went wrong inside the accounts router',
         errMessage: err.message,

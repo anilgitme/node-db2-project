@@ -10,9 +10,9 @@ const getById = () => {
     return db('cars').where('id', id).first();
 }
 
-const create = () => {
+const create = async(car) => {
     // DO YOUR MAGIC
-    const [id] = await db('cars').insert(car)
+    const { id } = await db('cars').insert(car)
     return getById(id)
 }
 
