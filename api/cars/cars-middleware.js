@@ -47,7 +47,7 @@ const checkVinNumberValid = (req, res, next) => {
 const checkVinNumberUnique = async(req, res, next) => {
     // DO YOUR MAGIC
     try {
-        const vin = await Cars.getByVin(req.body.vin);
+        const vin = await Cars.getAll(req.body.vin);
         if (vin) {
             res.status(400).json({ message: `vin number ${req.body.vin} already exists` })
         } else {

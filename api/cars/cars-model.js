@@ -12,7 +12,7 @@ const getById = () => {
 
 const create = () => {
     // DO YOUR MAGIC
-    const { id } = await db('cars').insert(car)
+    const [id] = await db('cars').insert(car)
     return getById(id)
 }
 
